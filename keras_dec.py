@@ -23,6 +23,7 @@ else:
     import pickle
 import numpy as np
 
+# clustring layer -------------------------------------------------------------
 class ClusteringLayer(Layer):
     '''
     Clustering layer which converts latent space Z of input layer
@@ -84,7 +85,7 @@ class ClusteringLayer(Layer):
         base_config = super(ClusteringLayer, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
-
+# 
 class DeepEmbeddingClustering(object):
     def __init__(self,
                  n_clusters,
