@@ -85,7 +85,7 @@ class ClusteringLayer(Layer):
         base_config = super(ClusteringLayer, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
-# 
+# DEC clustering func ---------------------------------------------------------
 class DeepEmbeddingClustering(object):
     def __init__(self,
                  n_clusters,
@@ -110,13 +110,13 @@ class DeepEmbeddingClustering(object):
         self.batch_size = batch_size
 
         self.learning_rate = 0.1
-        self.iters_lr_update = 20000
+        self.iters_lr_update = 2000
         self.lr_change_rate = 0.1
 
         # greedy layer-wise training before end-to-end training:
-
         self.encoders_dims = [self.input_dim, 500, 500, 2000, 10]
-
+        
+        # 
         self.input_layer = Input(shape=(self.input_dim,), name='input')
         dropout_fraction = 0.2
         init_stddev = 0.01
