@@ -2,7 +2,7 @@ from keras_dec import DeepEmbeddingClustering
 from keras.datasets import mnist
 import numpy as np
 
-
+# mnist data loading & reshape function -------------------------------------------
 def get_mnist():
     np.random.seed(1234) # set seed for deterministic ordering
     (x_train, y_train), (x_test, y_test) = mnist.load_data()
@@ -15,9 +15,10 @@ def get_mnist():
     Y = Y[p]
     return X, Y
 
-
+# call -----------------------------------------------------------------------------
 X, Y  = get_mnist()
 
+# DEC clustering call --------------------------------------------------------------
 c = DeepEmbeddingClustering(n_clusters=10, input_dim=784)
 c.initialize(X, finetune_iters=100000, layerwise_pretrain_iters=50000)
 c.cluster(X, y=Y)
